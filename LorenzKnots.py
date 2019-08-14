@@ -375,6 +375,7 @@ if __name__ == '__main__':
     knot_string = 'LRLRRRLRRR'
     lk = LorenzKnot(knot_string)
     knot_code = str(lk.dowker_code())
-    print "The Lorenz Knot with word ", knot_string, " has Dowker code \n",  knot_code 
+    print("The Lorenz Knot with word ", knot_string, " has Dowker code \n",  knot_code)
+    print("The braid representation is: \n")
     lk.convert_to_braid()
-    print lk.braid
+    print(lk.braid)
