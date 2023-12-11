@@ -370,6 +370,35 @@ class LorenzKnot():
                     return self
         return self
     
+def plot_braid(braid_word):
+    num_strands = max(braid_word) + 2  # Number of strands
+    num_crossings = len(braid_word)  # Number of crossings
+
+    # Initialize plot
+    plt.figure(figsize=(num_crossings, num_strands))
+    plt.axis('off')
+
+    # Create a grid to plot the strands
+    grid = np.linspace(0, num_strands - 1, num_strands)
+
+    # Iterate over each crossing in the braid word
+    for i, crossing in enumerate(braid_word):
+        # Plot each strand
+        for strand in range(num_strands):
+            if strand == crossing:
+                # Plot the over-crossing strand
+                plt.plot([i, i + 1], [strand, strand + 1], color='black', linewidth=2)
+            elif strand == crossing + 1:
+                # Plot the under-crossing strand
+                plt.plot([i, i + 1], [strand, strand - 1], color='black', linewidth=2, linestyle=':')
+            else:
+                # Plot a straight strand
+                plt.plot([i, i + 1], [strand, strand], color='black', linewidth=2)
+
+    plt.xlim(-1, num_crossings + 1)
+    plt.ylim(-1, num_strands)
+    plt.show()
+    
     
 if __name__ == '__main__':
     knot_string = 'LRLRRRLRRR'
